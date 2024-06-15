@@ -33,13 +33,13 @@ export class Color {
           this.a = trimed[8] ? Number('0x' + trimed[7] + trimed[8]) : 1;
         }
       } else if (trimed.startsWith('rgb(')) {
-        const arr = trimed.substring(4).split(',');
+        const arr = trimed.substring(4, trimed.length - 1).split(',');
         this.r = Number(arr[0]);
         this.g = Number(arr[1]);
         this.b = Number(arr[2]);
         this.a = 1;
       } else if (trimed.startsWith('rgba(')) {
-        const arr = trimed.substring(5).split(',');
+        const arr = trimed.substring(5, trimed.length - 1).split(',');
         this.r = Number(arr[0]);
         this.g = Number(arr[1]);
         this.b = Number(arr[2]);
