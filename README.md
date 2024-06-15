@@ -18,6 +18,24 @@ new FastColor('#66ccff');
 new FastColor('rgba(102, 204, 255, .5)');
 ```
 
+## Brightness
+
+Returns the perceived brightness of the color, between 0 and 255. See http://www.w3.org/TR/AERT#color-contrast
+
+If brightness is less than 128, the color is dark. Otherwise, it is light color.
+
+```js
+import { FastColor } from 'fastcolor';
+
+const color = new FastColor('#66ccff');
+color.getBrightness();
+// 179.316
+color.isDark();
+// false
+color.isLight();
+// true
+```
+
 ## Lightness
 
 Lightness value between 0 and 1.
@@ -42,7 +60,6 @@ const color2 = color1.clone();
 ## TODO
 
 - darken()
-- isLight()
 - lighten()
 - onBackground()
 - setAlpha()

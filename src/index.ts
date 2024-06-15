@@ -18,6 +18,7 @@ export class FastColor {
   a: number;
 
   private _l?: number;
+  private _brightness?: number;
 
   constructor(input: ColorInput) {
     if (typeof input === 'string') {
@@ -56,12 +57,31 @@ export class FastColor {
   }
 
   getLightness() {
-    if (!this._l) {
+    if (typeof this._l === 'undefined') {
       const max = Math.max(this.r, this.g, this.b);
       const min = Math.min(this.r, this.g, this.b);
       this._l = (max + min) / 512;
     }
     return this._l;
+  }
+
+  isDark(): boolean {
+    return this.getBrightness() < 128;
+  }
+
+  isLight(): boolean {
+    return this.getBrightness() >= 128;
+  }
+
+  /**
+   * Returns the perceived brightness of the color, from 0-255.
+   * @see http://www.w3.org/TR/AERT#color-contrast
+   */
+  getBrightness(): number {
+    if (typeof this._brightness === 'undefined') {
+      this._brightness = (this.r * 299 + this.g * 587 + this.b * 114) / 1000;
+    }
+    return this._brightness;
   }
 
   clone() {

@@ -23,6 +23,21 @@ describe('FastColor', () => {
     });
   });
 
+  describe('getBrightness', async () => {
+    const color = new FastColor('#66ccff');
+    expect(color.getBrightness()).toBe(179.316);
+  });
+
+  describe('isDark', async () => {
+    const color = new FastColor('#66ccff');
+    expect(color.isDark()).toBe(false);
+  });
+
+  describe('isLight', async () => {
+    const color = new FastColor('#66ccff');
+    expect(color.isLight()).toBe(true);
+  });
+
   describe('getLightness', async () => {
     const color = new FastColor('#66ccff');
     expect(color.getLightness().toFixed(2)).toBe('0.70');
