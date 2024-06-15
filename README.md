@@ -70,8 +70,18 @@ const color = new FastColor('#66ccff');
 color.setAlpha(0.67);
 ```
 
+## onBackground
+
+```js
+import { FastColor } from 'fastcolor';
+
+const color = new FastColor('#66ccffaa');
+const background = new FastColor('#000000');
+const mixed = color.onBackground(background);
+// rgb(68,136,170)
+```
+
 ## TODO
 
 - darken()
 - lighten()
-- onBackground()
