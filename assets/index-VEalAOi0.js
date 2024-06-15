@@ -275,6 +275,8 @@ color.isLight();
 const color = new FastColor('#66ccff');
 color.getLightness();
 // 0.697265625
+color.darken(10);
+color.lighten(5);
 `})}),`
 `,k.jsx(t.h2,{children:"Alpha"}),`
 `,k.jsx(t.p,{children:"Lightness value between 0 and 1."}),`
@@ -290,9 +292,4 @@ const color = new FastColor('#66ccffaa');
 const background = new FastColor('#000000');
 const mixed = color.onBackground(background);
 // rgb(68,136,170)
-`})}),`
-`,k.jsx(t.h2,{children:"TODO"}),`
-`,k.jsxs(t.ul,{children:[`
-`,k.jsx(t.li,{children:"darken()"}),`
-`,k.jsx(t.li,{children:"lighten()"}),`
-`]})]})}function rm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?k.jsx(t,{...e,children:k.jsx(qd,{...e})}):qd(e)}rm.displayName="MDXContent";const IE=Object.freeze(Object.defineProperty({__proto__:null,default:rm,filepath:_E,frontmatter:EE,title:SE},Symbol.toStringTag,{value:"Module"}));function kE(){return k.jsx(jE,{docs:[xE,IE],basename:"/fastcolor/",languages:void 0})}ob(document.getElementById("root")).render(k.jsx(kE,{}));
+`})})]})}function rm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?k.jsx(t,{...e,children:k.jsx(qd,{...e})}):qd(e)}rm.displayName="MDXContent";const IE=Object.freeze(Object.defineProperty({__proto__:null,default:rm,filepath:_E,frontmatter:EE,title:SE},Symbol.toStringTag,{value:"Module"}));function kE(){return k.jsx(jE,{docs:[xE,IE],basename:"/fastcolor/",languages:void 0})}ob(document.getElementById("root")).render(k.jsx(kE,{}));
