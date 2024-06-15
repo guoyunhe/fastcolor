@@ -86,6 +86,30 @@ describe('clone', () => {
   });
 });
 
+describe('darken', () => {
+  const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
+  bench('@ctrl/tinycolor', () => {
+    color1.darken();
+  });
+
+  const color2 = new FastColor({ r: 11, g: 22, b: 33 });
+  bench('fastcolor', () => {
+    color2.darken();
+  });
+});
+
+describe('lighten', () => {
+  const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
+  bench('@ctrl/tinycolor', () => {
+    color1.lighten();
+  });
+
+  const color2 = new FastColor({ r: 11, g: 22, b: 33 });
+  bench('fastcolor', () => {
+    color2.lighten();
+  });
+});
+
 describe('getBrightness', () => {
   const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
   bench('@ctrl/tinycolor', () => {
