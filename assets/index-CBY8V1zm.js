@@ -241,11 +241,19 @@ ${n.map(({variableName:r,uniqueLocalName:o})=>`  reactHotLoader.register(${r}, "
 `]}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{children:`npm install --save fastcolor
 `})}),`
-`,k.jsx(t.h2,{children:"Usage"}),`
+`,k.jsx(t.h2,{children:"Constructor"}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
 
 new FastColor('#66ccff');
 new FastColor('rgba(102, 204, 255, .5)');
+`})}),`
+`,k.jsx(t.h2,{children:"Clone"}),`
+`,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
+
+const color1 = new FastColor('#66ccff');
+const color2 = color1.clone();
+// you can also do
+const color3 = new FastColor(color2);
 `})}),`
 `,k.jsx(t.h2,{children:"Brightness"}),`
 `,k.jsxs(t.p,{children:["Returns the perceived brightness of the color, between 0 and 255. See ",k.jsx(t.a,{href:"http://www.w3.org/TR/AERT#color-contrast",children:"http://www.w3.org/TR/AERT#color-contrast"})]}),`
@@ -268,11 +276,12 @@ const color = new FastColor('#66ccff');
 color.getLightness();
 // 0.697265625
 `})}),`
-`,k.jsx(t.h2,{children:"Clone"}),`
+`,k.jsx(t.h2,{children:"Alpha"}),`
+`,k.jsx(t.p,{children:"Lightness value between 0 and 1."}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
 
-const color1 = new FastColor('#66ccff');
-const color2 = color1.clone();
+const color = new FastColor('#66ccff');
+color.setAlpha(0.67);
 `})}),`
 `,k.jsx(t.h2,{children:"TODO"}),`
 `,k.jsxs(t.ul,{children:[`
