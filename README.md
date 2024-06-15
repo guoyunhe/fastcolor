@@ -18,6 +18,18 @@ new FastColor('#66ccff');
 new FastColor('rgba(102, 204, 255, .5)');
 ```
 
+## Lightness
+
+Lightness value between 0 and 1.
+
+```js
+import { FastColor } from 'fastcolor';
+
+const color = new FastColor('#66ccff');
+color.getLightness();
+// 0.697265625
+```
+
 ## Clone
 
 ```js
@@ -35,6 +47,5 @@ const color2 = color1.clone();
 - onBackground()
 - setAlpha()
 - toHexString()
-- toHsl().l
 - toRgb()
 - toRgbString()

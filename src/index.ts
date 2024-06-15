@@ -17,20 +17,22 @@ export class FastColor {
   b: number;
   a: number;
 
+  private _l?: number;
+
   constructor(input: ColorInput) {
     if (typeof input === 'string') {
       const trimed = input.trim();
       if (trimed[0] === '#') {
         if (trimed.length < 6) {
-          this.r = Number('0x' + trimed[1]);
-          this.g = Number('0x' + trimed[2]);
-          this.b = Number('0x' + trimed[3]);
-          this.a = trimed[4] ? Number('0x' + trimed[4]) : 1;
+          this.r = Number('0x' + trimed[1] + trimed[1]);
+          this.g = Number('0x' + trimed[2] + trimed[2]);
+          this.b = Number('0x' + trimed[3] + trimed[3]);
+          this.a = trimed[4] ? Number('0x' + trimed[4] + trimed[4]) / 255 : 1;
         } else {
           this.r = Number('0x' + trimed[1] + trimed[2]);
           this.g = Number('0x' + trimed[3] + trimed[4]);
           this.b = Number('0x' + trimed[5] + trimed[6]);
-          this.a = trimed[8] ? Number('0x' + trimed[7] + trimed[8]) : 1;
+          this.a = trimed[8] ? Number('0x' + trimed[7] + trimed[8]) / 255 : 1;
         }
       } else if (trimed.startsWith('rgb(')) {
         const arr = trimed.substring(4, trimed.length - 1).split(',');
@@ -51,6 +53,15 @@ export class FastColor {
       this.b = input.b;
       this.a = typeof input.a === 'number' ? input.a : 1;
     }
+  }
+
+  getLightness() {
+    if (!this._l) {
+      const max = Math.max(this.r, this.g, this.b);
+      const min = Math.min(this.r, this.g, this.b);
+      this._l = (max + min) / 512;
+    }
+    return this._l;
   }
 
   clone() {
