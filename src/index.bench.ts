@@ -98,6 +98,20 @@ describe('getBrightness', () => {
   });
 });
 
+describe('onBackground', () => {
+  const color1 = new TinyColor({ r: 11, g: 22, b: 33, a: 0.5 });
+  const background1 = new TinyColor({ r: 0, g: 0, b: 0 });
+  bench('@ctrl/tinycolor', () => {
+    color1.onBackground(background1);
+  });
+
+  const color2 = new FastColor({ r: 11, g: 22, b: 33, a: 0.5 });
+  const background2 = new FastColor({ r: 0, g: 0, b: 0 });
+  bench('fastcolor', () => {
+    color2.onBackground(background2);
+  });
+});
+
 describe('setAlpha', () => {
   const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
   bench('@ctrl/tinycolor', () => {

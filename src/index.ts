@@ -88,6 +88,17 @@ export class FastColor {
     return this.getBrightness() >= 128;
   }
 
+  onBackground(bg: FastColor) {
+    const alpha = this.a + bg.a * (1 - this.a);
+
+    return new FastColor({
+      r: (this.r * this.a + bg.r * bg.a * (1 - this.a)) / alpha,
+      g: (this.g * this.a + bg.g * bg.a * (1 - this.a)) / alpha,
+      b: (this.b * this.a + bg.b * bg.a * (1 - this.a)) / alpha,
+      a: alpha,
+    });
+  }
+
   setAlpha(alpha: number) {
     this.a = alpha;
   }
