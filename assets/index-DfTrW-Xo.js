@@ -241,10 +241,17 @@ ${n.map(({variableName:r,uniqueLocalName:o})=>`  reactHotLoader.register(${r}, "
 `]}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{children:`npm install --save fastcolor
 `})}),`
+`,k.jsx(t.h2,{children:"Usage"}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
 
 new FastColor('#66ccff');
 new FastColor('rgba(102, 204, 255, .5)');
+`})}),`
+`,k.jsx(t.h2,{children:"Clone"}),`
+`,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
+
+const color1 = new FastColor('#66ccff');
+const color2 = color1.clone();
 `})}),`
 `,k.jsx(t.h2,{children:"TODO"}),`
 `,k.jsxs(t.ul,{children:[`
