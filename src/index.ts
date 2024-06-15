@@ -92,6 +92,15 @@ export class FastColor {
     this.a = alpha;
   }
 
+  toRgb() {
+    return {
+      r: this.r,
+      g: this.g,
+      b: this.b,
+      a: this.a,
+    };
+  }
+
   toRgbString() {
     return this.a !== 1
       ? `rgba(${this.r},${this.g},${this.b},${this.a.toPrecision(2)})`
