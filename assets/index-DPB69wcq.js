@@ -233,9 +233,16 @@ ${n.map(({variableName:r,uniqueLocalName:o})=>`  reactHotLoader.register(${r}, "
 `,A.jsx(t.li,{children:"Updated something..."}),`
 `,A.jsx(t.li,{children:"Improved something..."}),`
 `,A.jsx(t.li,{children:"Deprecated something..."}),`
-`]})]})}function nm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?A.jsx(t,{...e,children:A.jsx(Vd,{...e})}):Vd(e)}nm.displayName="MDXContent";const xE=Object.freeze(Object.defineProperty({__proto__:null,default:nm,filepath:vE,frontmatter:PE,title:wE},Symbol.toStringTag,{value:"Module"})),_E="README.md",SE="nanocolor",EE=void 0;function qd(e){const t={code:"code",h1:"h1",li:"li",p:"p",ul:"ul",...Hl(),...e.components};return A.jsxs(A.Fragment,{children:[A.jsx(t.h1,{children:"nanocolor"}),`
-`,A.jsxs(t.p,{children:["Fast Color class for modern browser. Can be a drop-in replacement for ",A.jsx(t.code,{children:"tinycolor"}),", ",A.jsx(t.code,{children:"tinycolor2"}),", ",A.jsx(t.code,{children:"@ctrl/tinycolor"}),", with the follwing differences:"]}),`
+`]})]})}function nm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?A.jsx(t,{...e,children:A.jsx(Vd,{...e})}):Vd(e)}nm.displayName="MDXContent";const xE=Object.freeze(Object.defineProperty({__proto__:null,default:nm,filepath:vE,frontmatter:PE,title:wE},Symbol.toStringTag,{value:"Module"})),_E="README.md",SE="fastcolor",EE=void 0;function qd(e){const t={code:"code",h1:"h1",li:"li",p:"p",pre:"pre",ul:"ul",...Hl(),...e.components};return A.jsxs(A.Fragment,{children:[A.jsx(t.h1,{children:"fastcolor"}),`
+`,A.jsxs(t.p,{children:["Color class 2~4x faster than ",A.jsx(t.code,{children:"@ctrl/cinycolor"}),". Can be a drop-in replacement for ",A.jsx(t.code,{children:"@ctrl/tinycolor"}),", with the follwing differences:"]}),`
 `,A.jsxs(t.ul,{children:[`
 `,A.jsxs(t.li,{children:["Don't support CSS color names, like ",A.jsx(t.code,{children:"'darkgreen'"}),", ",A.jsx(t.code,{children:"'orange'"}),". This helps reduce bundle size."]}),`
 `,A.jsx(t.li,{children:"Don't support CMYK, HSL, HSV as input and output formats. This helps reduce bundle size and improve performance."}),`
-`]})]})}function rm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?A.jsx(t,{...e,children:A.jsx(qd,{...e})}):qd(e)}rm.displayName="MDXContent";const IE=Object.freeze(Object.defineProperty({__proto__:null,default:rm,filepath:_E,frontmatter:EE,title:SE},Symbol.toStringTag,{value:"Module"}));function kE(){return A.jsx(jE,{docs:[xE,IE],basename:"/fastcolor/",languages:void 0})}ob(document.getElementById("root")).render(A.jsx(kE,{}));
+`]}),`
+`,A.jsx(t.pre,{children:A.jsx(t.code,{children:`npm install --save fastcolor
+`})}),`
+`,A.jsx(t.pre,{children:A.jsx(t.code,{className:"language-js",children:`import { Color } from 'fastcolor';
+
+new Color('#66ccff');
+new Color('rgba(102, 204, 255, .5)');
+`})})]})}function rm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?A.jsx(t,{...e,children:A.jsx(qd,{...e})}):qd(e)}rm.displayName="MDXContent";const IE=Object.freeze(Object.defineProperty({__proto__:null,default:rm,filepath:_E,frontmatter:EE,title:SE},Symbol.toStringTag,{value:"Module"}));function kE(){return A.jsx(jE,{docs:[xE,IE],basename:"/fastcolor/",languages:void 0})}ob(document.getElementById("root")).render(A.jsx(kE,{}));
