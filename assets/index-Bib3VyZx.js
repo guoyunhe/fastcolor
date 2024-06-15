@@ -233,7 +233,7 @@ ${n.map(({variableName:r,uniqueLocalName:o})=>`  reactHotLoader.register(${r}, "
 `,k.jsx(t.li,{children:"Updated something..."}),`
 `,k.jsx(t.li,{children:"Improved something..."}),`
 `,k.jsx(t.li,{children:"Deprecated something..."}),`
-`]})]})}function nm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?k.jsx(t,{...e,children:k.jsx(Vd,{...e})}):Vd(e)}nm.displayName="MDXContent";const xE=Object.freeze(Object.defineProperty({__proto__:null,default:nm,filepath:vE,frontmatter:PE,title:wE},Symbol.toStringTag,{value:"Module"})),_E="README.md",SE="fastcolor",EE=void 0;function qd(e){const t={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",ul:"ul",...Hl(),...e.components};return k.jsxs(k.Fragment,{children:[k.jsx(t.h1,{children:"fastcolor"}),`
+`]})]})}function nm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?k.jsx(t,{...e,children:k.jsx(Vd,{...e})}):Vd(e)}nm.displayName="MDXContent";const xE=Object.freeze(Object.defineProperty({__proto__:null,default:nm,filepath:vE,frontmatter:PE,title:wE},Symbol.toStringTag,{value:"Module"})),_E="README.md",SE="fastcolor",EE=void 0;function qd(e){const t={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",ul:"ul",...Hl(),...e.components};return k.jsxs(k.Fragment,{children:[k.jsx(t.h1,{children:"fastcolor"}),`
 `,k.jsxs(t.p,{children:["Color class 2~4x faster than ",k.jsx(t.code,{children:"@ctrl/cinycolor"}),". Can be a drop-in replacement for ",k.jsx(t.code,{children:"@ctrl/tinycolor"}),", with the follwing differences:"]}),`
 `,k.jsxs(t.ul,{children:[`
 `,k.jsxs(t.li,{children:["Don't support CSS color names, like ",k.jsx(t.code,{children:"'darkgreen'"}),", ",k.jsx(t.code,{children:"'orange'"}),". This helps reduce bundle size."]}),`
@@ -246,6 +246,19 @@ ${n.map(({variableName:r,uniqueLocalName:o})=>`  reactHotLoader.register(${r}, "
 
 new FastColor('#66ccff');
 new FastColor('rgba(102, 204, 255, .5)');
+`})}),`
+`,k.jsx(t.h2,{children:"Brightness"}),`
+`,k.jsxs(t.p,{children:["Returns the perceived brightness of the color, between 0 and 255. See ",k.jsx(t.a,{href:"http://www.w3.org/TR/AERT#color-contrast",children:"http://www.w3.org/TR/AERT#color-contrast"})]}),`
+`,k.jsx(t.p,{children:"If brightness is less than 128, the color is dark. Otherwise, it is light color."}),`
+`,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
+
+const color = new FastColor('#66ccff');
+color.getBrightness();
+// 179.316
+color.isDark();
+// false
+color.isLight();
+// true
 `})}),`
 `,k.jsx(t.h2,{children:"Lightness"}),`
 `,k.jsx(t.p,{children:"Lightness value between 0 and 1."}),`
@@ -264,7 +277,6 @@ const color2 = color1.clone();
 `,k.jsx(t.h2,{children:"TODO"}),`
 `,k.jsxs(t.ul,{children:[`
 `,k.jsx(t.li,{children:"darken()"}),`
-`,k.jsx(t.li,{children:"isLight()"}),`
 `,k.jsx(t.li,{children:"lighten()"}),`
 `,k.jsx(t.li,{children:"onBackground()"}),`
 `,k.jsx(t.li,{children:"setAlpha()"}),`
