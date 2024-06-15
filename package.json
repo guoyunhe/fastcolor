@@ -1,15 +1,15 @@
 {
-  "name": "nanocolor",
+  "name": "fastcolor",
   "version": "1.0.0",
   "description": "Color class for modern browser",
   "keywords": [],
-  "homepage": "https://github.com/guoyunhe/nanocolor#readme",
+  "homepage": "https://github.com/guoyunhe/fastcolor#readme",
   "bugs": {
-    "url": "https://github.com/guoyunhe/nanocolor/issues"
+    "url": "https://github.com/guoyunhe/fastcolor/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guoyunhe/nanocolor.git"
+    "url": "git+https://github.com/guoyunhe/fastcolor.git"
   },
   "funding": "https://github.com/sponsors/guoyunhe",
   "license": "MIT",
@@ -58,7 +58,7 @@
   "rive": {
     "template": "base",
     "doc": {
-      "basename": "/nanocolor/"
+      "basename": "/fastcolor/"
     }
   }
 }
