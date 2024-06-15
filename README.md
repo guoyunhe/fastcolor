@@ -1,4 +1,4 @@
-# nanocolor
+# fastcolor
 
 Fast Color class for modern browser. Can be a drop-in replacement for `tinycolor`, `tinycolor2`, `@ctrl/tinycolor`, with the follwing differences:
 
