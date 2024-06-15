@@ -247,6 +247,14 @@ ${n.map(({variableName:r,uniqueLocalName:o})=>`  reactHotLoader.register(${r}, "
 new FastColor('#66ccff');
 new FastColor('rgba(102, 204, 255, .5)');
 `})}),`
+`,k.jsx(t.h2,{children:"Lightness"}),`
+`,k.jsx(t.p,{children:"Lightness value between 0 and 1."}),`
+`,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
+
+const color = new FastColor('#66ccff');
+color.getLightness();
+// 0.697265625
+`})}),`
 `,k.jsx(t.h2,{children:"Clone"}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
 
@@ -261,7 +269,6 @@ const color2 = color1.clone();
 `,k.jsx(t.li,{children:"onBackground()"}),`
 `,k.jsx(t.li,{children:"setAlpha()"}),`
 `,k.jsx(t.li,{children:"toHexString()"}),`
-`,k.jsx(t.li,{children:"toHsl().l"}),`
 `,k.jsx(t.li,{children:"toRgb()"}),`
 `,k.jsx(t.li,{children:"toRgbString()"}),`
 `]})]})}function rm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?k.jsx(t,{...e,children:k.jsx(qd,{...e})}):qd(e)}rm.displayName="MDXContent";const IE=Object.freeze(Object.defineProperty({__proto__:null,default:rm,filepath:_E,frontmatter:EE,title:SE},Symbol.toStringTag,{value:"Module"}));function kE(){return k.jsx(jE,{docs:[xE,IE],basename:"/fastcolor/",languages:void 0})}ob(document.getElementById("root")).render(k.jsx(kE,{}));
