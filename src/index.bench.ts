@@ -97,3 +97,15 @@ describe('getBrightness', () => {
     color2.getBrightness();
   });
 });
+
+describe('toRgbString', () => {
+  const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
+  bench('@ctrl/tinycolor', () => {
+    color1.toRgbString();
+  });
+
+  const color2 = new FastColor({ r: 11, g: 22, b: 33 });
+  bench('fastcolor', () => {
+    color2.toRgbString();
+  });
+});

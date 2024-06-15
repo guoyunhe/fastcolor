@@ -56,6 +56,10 @@ export class FastColor {
     }
   }
 
+  clone() {
+    return new FastColor(this);
+  }
+
   getLightness() {
     if (typeof this._l === 'undefined') {
       const max = Math.max(this.r, this.g, this.b);
@@ -63,14 +67,6 @@ export class FastColor {
       this._l = (max + min) / 512;
     }
     return this._l;
-  }
-
-  isDark(): boolean {
-    return this.getBrightness() < 128;
-  }
-
-  isLight(): boolean {
-    return this.getBrightness() >= 128;
   }
 
   /**
@@ -84,8 +80,18 @@ export class FastColor {
     return this._brightness;
   }
 
-  clone() {
-    return new FastColor(this);
+  isDark(): boolean {
+    return this.getBrightness() < 128;
+  }
+
+  isLight(): boolean {
+    return this.getBrightness() >= 128;
+  }
+
+  toRgbString() {
+    return this.a !== 1
+      ? `rgba(${this.r},${this.g},${this.b},${this.a.toPrecision(2)})`
+      : `rgb(${this.r},${this.g},${this.b})`;
   }
 }
 
