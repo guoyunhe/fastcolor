@@ -49,6 +49,16 @@ describe('FastColor', () => {
     expect(color.getLightness().toFixed(2)).toBe('0.70');
   });
 
+  describe('darken', async () => {
+    const color = new FastColor('#66ccff');
+    expect(color.darken().toHexString()).toBe('#98999a');
+  });
+
+  describe('lighten', async () => {
+    const color = new FastColor('#66ccff');
+    expect(color.lighten().toHexString()).toBe('#cbcccd');
+  });
+
   describe('onBackground', async () => {
     const color = new FastColor('#66ccffaa');
     const background = new FastColor('#000000');
