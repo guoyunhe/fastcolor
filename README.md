@@ -57,6 +57,8 @@ import { FastColor } from 'fastcolor';
 const color = new FastColor('#66ccff');
 color.getLightness();
 // 0.697265625
+color.darken(10);
+color.lighten(5);
 ```
 
 ## Alpha
@@ -80,8 +82,3 @@ const background = new FastColor('#000000');
 const mixed = color.onBackground(background);
 // rgb(68,136,170)
 ```
-
-## TODO
-
-- darken()
-- lighten()
