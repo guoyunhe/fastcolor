@@ -279,8 +279,6 @@ const color2 = color1.clone();
 `,k.jsx(t.li,{children:"darken()"}),`
 `,k.jsx(t.li,{children:"lighten()"}),`
 `,k.jsx(t.li,{children:"onBackground()"}),`
-`,k.jsx(t.li,{children:"setAlpha()"}),`
 `,k.jsx(t.li,{children:"toHexString()"}),`
 `,k.jsx(t.li,{children:"toRgb()"}),`
-`,k.jsx(t.li,{children:"toRgbString()"}),`
 `]})]})}function rm(e={}){const{wrapper:t}={...Hl(),...e.components};return t?k.jsx(t,{...e,children:k.jsx(qd,{...e})}):qd(e)}rm.displayName="MDXContent";const IE=Object.freeze(Object.defineProperty({__proto__:null,default:rm,filepath:_E,frontmatter:EE,title:SE},Symbol.toStringTag,{value:"Module"}));function kE(){return k.jsx(jE,{docs:[xE,IE],basename:"/fastcolor/",languages:void 0})}ob(document.getElementById("root")).render(k.jsx(kE,{}));
