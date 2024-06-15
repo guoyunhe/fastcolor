@@ -1,6 +1,6 @@
 import { TinyColor } from '@ctrl/tinycolor';
 import { bench } from 'vitest';
-import NanoColor from '.';
+import FastColor from '.';
 
 describe('constructor', () => {
   describe('hex #6cf', () => {
@@ -8,8 +8,8 @@ describe('constructor', () => {
       new TinyColor('#6cf');
     });
 
-    bench('nanocolor', () => {
-      new NanoColor('#6cf');
+    bench('fastcolor', () => {
+      new FastColor('#6cf');
     });
   });
 
@@ -18,8 +18,8 @@ describe('constructor', () => {
       new TinyColor('#6cfa');
     });
 
-    bench('nanocolor', () => {
-      new NanoColor('#6cfa');
+    bench('fastcolor', () => {
+      new FastColor('#6cfa');
     });
   });
 
@@ -28,8 +28,8 @@ describe('constructor', () => {
       new TinyColor('#66ccff');
     });
 
-    bench('nanocolor', () => {
-      new NanoColor('#66ccff');
+    bench('fastcolor', () => {
+      new FastColor('#66ccff');
     });
   });
 
@@ -38,8 +38,8 @@ describe('constructor', () => {
       new TinyColor('#66ccffaa');
     });
 
-    bench('nanocolor', () => {
-      new NanoColor('#66ccffaa');
+    bench('fastcolor', () => {
+      new FastColor('#66ccffaa');
     });
   });
 
@@ -48,8 +48,8 @@ describe('constructor', () => {
       new TinyColor('rgb(11, 22, 33)');
     });
 
-    bench('nanocolor', () => {
-      new NanoColor('rgb(11, 22, 33)');
+    bench('fastcolor', () => {
+      new FastColor('rgb(11, 22, 33)');
     });
   });
 
@@ -58,8 +58,8 @@ describe('constructor', () => {
       new TinyColor('rgba(11, 22, 33, .5)');
     });
 
-    bench('nanocolor', () => {
-      new NanoColor('rgba(11, 22, 33, .5)');
+    bench('fastcolor', () => {
+      new FastColor('rgba(11, 22, 33, .5)');
     });
   });
 
@@ -68,8 +68,20 @@ describe('constructor', () => {
       new TinyColor({ r: 11, g: 22, b: 33 });
     });
 
-    bench('nanocolor', () => {
-      new NanoColor({ r: 11, g: 22, b: 33 });
+    bench('fastcolor', () => {
+      new FastColor({ r: 11, g: 22, b: 33 });
     });
+  });
+});
+
+describe('clone', () => {
+  const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
+  bench('@ctrl/tinycolor', () => {
+    color1.clone();
+  });
+
+  const color2 = new FastColor({ r: 11, g: 22, b: 33 });
+  bench('fastcolor', () => {
+    color2.clone();
   });
 });

@@ -11,7 +11,7 @@ export type ColorInput =
       a?: number;
     };
 
-export class Color {
+export class FastColor {
   r: number;
   g: number;
   b: number;
@@ -52,8 +52,12 @@ export class Color {
       this.a = typeof input.a === 'number' ? input.a : 1;
     }
   }
+
+  clone() {
+    return new FastColor(this);
+  }
 }
 
-export default Color;
+export default FastColor;
 
-export { Color as TinyColor };
+export { FastColor as TinyColor };

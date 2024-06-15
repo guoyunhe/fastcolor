@@ -10,8 +10,20 @@ npm install --save fastcolor
 ```
 
 ```js
-import { Color } from 'fastcolor';
+import { FastColor } from 'fastcolor';
 
-new Color('#66ccff');
-new Color('rgba(102, 204, 255, .5)');
+new FastColor('#66ccff');
+new FastColor('rgba(102, 204, 255, .5)');
 ```
+
+## TODO
+
+- darken()
+- isLight()
+- lighten()
+- onBackground()
+- setAlpha()
+- toHexString()
+- toHsl().l
+- toRgb()
+- toRgbString()
