@@ -28,6 +28,7 @@
     "README.md"
   ],
   "scripts": {
+    "bench": "rive bench",
     "build": "rive build",
     "build:watch": "rive build --watch",
     "lint": "rive lint",
@@ -42,6 +43,7 @@
     "extends": "eslint-config-rive"
   },
   "devDependencies": {
+    "@ctrl/tinycolor": "^4.1.0",
     "@mdx-js/react": "^3.0.1",
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
@@ -50,7 +52,8 @@
     "react-doc-ui": "^2.2.6",
     "react-dom": "^18.3.1",
     "rive": "^2.0.33",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
   },
   "rive": {
     "template": "base",
