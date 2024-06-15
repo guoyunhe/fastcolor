@@ -77,8 +77,8 @@ export class FastColor {
       return new FastColor({ r: rgb, g: rgb, b: rgb, a });
     }
 
-    const huePrime = (((h % 360) + 360) % 360) / 60;
-    const chroma = (1 - Math.abs(2 * l - 1)) * (s / 100);
+    const huePrime = h / 60;
+    const chroma = (1 - Math.abs(2 * l - 1)) * s;
     const secondComponent = chroma * (1 - Math.abs((huePrime % 2) - 1));
 
     let r = 0;
@@ -109,6 +109,7 @@ export class FastColor {
     r = Math.round((r + lightnessModification) * 255);
     g = Math.round((g + lightnessModification) * 255);
     b = Math.round((b + lightnessModification) * 255);
+
     return new FastColor({ r, g, b, a });
   }
 
@@ -119,6 +120,7 @@ export class FastColor {
     if (l < 0) {
       l = 0;
     }
+    console.log(h, s, l);
     return FastColor.fromHSLA({ h, s, l, a: this.a });
   }
 

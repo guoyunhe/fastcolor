@@ -51,12 +51,12 @@ describe('FastColor', () => {
 
   describe('darken', async () => {
     const color = new FastColor('#66ccff');
-    expect(color.darken().toHexString()).toBe('#98999a');
+    expect(color.darken().toHexString()).toBe('#33bbff');
   });
 
   describe('lighten', async () => {
     const color = new FastColor('#66ccff');
-    expect(color.lighten().toHexString()).toBe('#cbcccd');
+    expect(color.lighten().toHexString()).toBe('#99ddff');
   });
 
   describe('onBackground', async () => {
