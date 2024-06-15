@@ -1,0 +1,61 @@
+{
+  "name": "nanocolor",
+  "version": "1.0.0",
+  "description": "Color class for modern browser",
+  "keywords": [],
+  "homepage": "https://github.com/guoyunhe/nanocolor#readme",
+  "bugs": {
+    "url": "https://github.com/guoyunhe/nanocolor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guoyunhe/nanocolor.git"
+  },
+  "funding": "https://github.com/sponsors/guoyunhe",
+  "license": "MIT",
+  "author": {
+    "name": "Guo Yunhe",
+    "email": "i@guoyunhe.me",
+    "url": "https://guoyunhe.me/"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rive build",
+    "build:watch": "rive build --watch",
+    "lint": "rive lint",
+    "lint:fix": "rive lint --fix",
+    "start": "rive start",
+    "test": "rive test",
+    "test:ui": "rive test --ui",
+    "test:watch": "rive test --watch"
+  },
+  "prettier": "prettier-config-rive",
+  "eslintConfig": {
+    "extends": "eslint-config-rive"
+  },
+  "devDependencies": {
+    "@mdx-js/react": "^3.0.1",
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-doc-ui": "^2.2.6",
+    "react-dom": "^18.3.1",
+    "rive": "^2.0.33",
+    "typescript": "^5.4.5"
+  },
+  "rive": {
+    "template": "base",
+    "doc": {
+      "basename": "/nanocolor/"
+    }
+  }
+}
