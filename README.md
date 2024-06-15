@@ -75,4 +75,3 @@ color.setAlpha(0.67);
 - darken()
 - lighten()
 - onBackground()
-- toHexString()

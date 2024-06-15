@@ -51,8 +51,13 @@ describe('FastColor', () => {
 
   describe('setAlpha', async () => {
     const color = new FastColor('#66ccff');
-    color.setAlpha(0.67);
+    color.setAlpha(0.66666);
     expect(color.toRgbString()).toBe('rgba(102,204,255,0.67)');
+  });
+
+  describe('toHexString', async () => {
+    const color = new FastColor('rgba(102,204,255,0.6666)');
+    expect(color.toHexString()).toBe('#66ccffaa');
   });
 
   describe('toRgbString', async () => {

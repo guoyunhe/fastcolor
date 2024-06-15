@@ -92,6 +92,21 @@ export class FastColor {
     this.a = alpha;
   }
 
+  toHexString() {
+    let hex = '#';
+    const rHex = this.r.toString(16);
+    hex += rHex.length === 2 ? rHex : '0' + rHex;
+    const gHex = this.g.toString(16);
+    hex += gHex.length === 2 ? gHex : '0' + gHex;
+    const bHex = this.b.toString(16);
+    hex += bHex.length === 2 ? bHex : '0' + bHex;
+    if (this.a !== 1) {
+      const aHex = Math.round(this.a * 255).toString(16);
+      hex += aHex.length === 2 ? aHex : '0' + aHex;
+    }
+    return hex;
+  }
+
   toRgb() {
     return {
       r: this.r,
