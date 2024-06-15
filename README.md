@@ -9,13 +9,24 @@ Color class 2~4x faster than `@ctrl/cinycolor`. Can be a drop-in replacement for
 npm install --save fastcolor
 ```
 
-## Usage
+## Constructor
 
 ```js
 import { FastColor } from 'fastcolor';
 
 new FastColor('#66ccff');
 new FastColor('rgba(102, 204, 255, .5)');
+```
+
+## Clone
+
+```js
+import { FastColor } from 'fastcolor';
+
+const color1 = new FastColor('#66ccff');
+const color2 = color1.clone();
+// you can also do
+const color3 = new FastColor(color2);
 ```
 
 ## Brightness
@@ -48,13 +59,15 @@ color.getLightness();
 // 0.697265625
 ```
 
-## Clone
+## Alpha
+
+Lightness value between 0 and 1.
 
 ```js
 import { FastColor } from 'fastcolor';
 
-const color1 = new FastColor('#66ccff');
-const color2 = color1.clone();
+const color = new FastColor('#66ccff');
+color.setAlpha(0.67);
 ```
 
 ## TODO
