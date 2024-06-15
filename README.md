@@ -62,7 +62,5 @@ const color2 = color1.clone();
 - darken()
 - lighten()
 - onBackground()
-- setAlpha()
 - toHexString()
 - toRgb()
-- toRgbString()

@@ -98,6 +98,18 @@ describe('getBrightness', () => {
   });
 });
 
+describe('setAlpha', () => {
+  const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
+  bench('@ctrl/tinycolor', () => {
+    color1.setAlpha(0.67);
+  });
+
+  const color2 = new FastColor({ r: 11, g: 22, b: 33 });
+  bench('fastcolor', () => {
+    color2.setAlpha(0.67);
+  });
+});
+
 describe('toRgbString', () => {
   const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
   bench('@ctrl/tinycolor', () => {

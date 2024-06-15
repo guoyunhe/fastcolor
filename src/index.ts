@@ -88,6 +88,10 @@ export class FastColor {
     return this.getBrightness() >= 128;
   }
 
+  setAlpha(alpha: number) {
+    this.a = alpha;
+  }
+
   toRgbString() {
     return this.a !== 1
       ? `rgba(${this.r},${this.g},${this.b},${this.a.toPrecision(2)})`

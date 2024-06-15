@@ -49,6 +49,12 @@ describe('FastColor', () => {
     expect(color.getLightness().toFixed(2)).toBe('0.70');
   });
 
+  describe('setAlpha', async () => {
+    const color = new FastColor('#66ccff');
+    color.setAlpha(0.67);
+    expect(color.toRgbString()).toBe('rgba(102,204,255,0.67)');
+  });
+
   describe('toRgbString', async () => {
     describe('with alpha', async () => {
       const color = new FastColor('#66ccffaa');
