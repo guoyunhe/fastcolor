@@ -237,15 +237,22 @@ ${n.map(({variableName:r,uniqueLocalName:o})=>`  reactHotLoader.register(${r}, "
 `,k.jsxs(t.p,{children:["Color class 2~4x faster than ",k.jsx(t.code,{children:"@ctrl/cinycolor"}),". Can be a drop-in replacement for ",k.jsx(t.code,{children:"@ctrl/tinycolor"}),", with the follwing differences:"]}),`
 `,k.jsxs(t.ul,{children:[`
 `,k.jsxs(t.li,{children:["Don't support CSS color names, like ",k.jsx(t.code,{children:"'darkgreen'"}),", ",k.jsx(t.code,{children:"'orange'"}),". This helps reduce bundle size."]}),`
-`,k.jsx(t.li,{children:"Don't support CMYK, HSL, HSV as input and output formats. This helps reduce bundle size and improve performance."}),`
+`,k.jsx(t.li,{children:"Don't support CMYK as input and output formats (almost no use case in web apps). This helps reduce bundle size and improve performance."}),`
 `]}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{children:`npm install --save fastcolor
 `})}),`
 `,k.jsx(t.h2,{children:"Constructor"}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
 
+new FastColor('#6cf');
 new FastColor('#66ccff');
+new FastColor('#66ccff88');
+new FastColor('rgba(102, 204, 255)');
 new FastColor('rgba(102, 204, 255, .5)');
+new FastColor('hsl(200, 60%, 75%)');
+new FastColor('hsla(200, 60%, 75%, 50%)');
+new FastColor({ r: 103, g: 204, b: 255, a: 0.5 });
+new FastColor({ h: 200, s: 0.6, l: 0.75 });
 `})}),`
 `,k.jsx(t.h2,{children:"Clone"}),`
 `,k.jsx(t.pre,{children:k.jsx(t.code,{className:"language-js",children:`import { FastColor } from 'fastcolor';
