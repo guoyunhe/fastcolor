@@ -1,7 +1,3 @@
-export interface NanocolorOptions {
-  lastNameUpperCase?: boolean;
-}
-
 interface RGBA {
   r: number;
   g: number;
@@ -16,7 +12,7 @@ interface HSLA {
   a?: number;
 }
 
-export type ColorInput = string | RGBA;
+export type ColorInput = string | RGBA | HSLA;
 
 export class FastColor {
   r: number;
@@ -24,12 +20,16 @@ export class FastColor {
   b: number;
   a: number;
 
+  // HSL values are initialized on demand and they are read only.
+  private _h?: number;
+  private _s?: number;
+  private _l?: number;
+
+  // intermedia variables to calculate HSL
   private _max?: number;
   private _min?: number;
-  private _hue?: number;
-  private _saturation?: number;
-  private _l?: number;
-  private _brightness?: number;
+
+  private brightness?: number;
 
   constructor(input: ColorInput) {
     if (typeof input === 'string') {
@@ -59,6 +59,8 @@ export class FastColor {
         this.b = parseInt(arr[2]);
         this.a = parseFloat(arr[3]);
       }
+    } else if ('l' in input) {
+      this.fromHSLA(input);
     } else {
       this.r = input.r;
       this.g = input.g;
@@ -71,46 +73,16 @@ export class FastColor {
     return new FastColor(this);
   }
 
-  static fromHSLA({ h, s, l, a }: HSLA) {
-    if (s === 0) {
-      const rgb = Math.round(l * 255);
-      return new FastColor({ r: rgb, g: rgb, b: rgb, a });
-    }
+  get h() {
+    return this.getHue();
+  }
 
-    const huePrime = h / 60;
-    const chroma = (1 - Math.abs(2 * l - 1)) * s;
-    const secondComponent = chroma * (1 - Math.abs((huePrime % 2) - 1));
+  get s() {
+    return this.getSaturation();
+  }
 
-    let r = 0;
-    let g = 0;
-    let b = 0;
-
-    if (huePrime >= 0 && huePrime < 1) {
-      r = chroma;
-      g = secondComponent;
-    } else if (huePrime >= 1 && huePrime < 2) {
-      r = secondComponent;
-      g = chroma;
-    } else if (huePrime >= 2 && huePrime < 3) {
-      g = chroma;
-      b = secondComponent;
-    } else if (huePrime >= 3 && huePrime < 4) {
-      g = secondComponent;
-      b = chroma;
-    } else if (huePrime >= 4 && huePrime < 5) {
-      r = secondComponent;
-      b = chroma;
-    } else if (huePrime >= 5 && huePrime < 6) {
-      r = chroma;
-      b = secondComponent;
-    }
-
-    const lightnessModification = l - chroma / 2;
-    r = Math.round((r + lightnessModification) * 255);
-    g = Math.round((g + lightnessModification) * 255);
-    b = Math.round((b + lightnessModification) * 255);
-
-    return new FastColor({ r, g, b, a });
+  get l() {
+    return this.getLightness();
   }
 
   darken(amount = 10): FastColor {
@@ -120,8 +92,7 @@ export class FastColor {
     if (l < 0) {
       l = 0;
     }
-    console.log(h, s, l);
-    return FastColor.fromHSLA({ h, s, l, a: this.a });
+    return new FastColor({ h, s, l, a: this.a });
   }
 
   lighten(amount = 10): FastColor {
@@ -131,7 +102,7 @@ export class FastColor {
     if (l > 1) {
       l = 1;
     }
-    return FastColor.fromHSLA({ h, s, l, a: this.a });
+    return new FastColor({ h, s, l, a: this.a });
   }
 
   getMax() {
@@ -149,14 +120,14 @@ export class FastColor {
   }
 
   getHue() {
-    if (typeof this._hue === 'undefined') {
+    if (typeof this._h === 'undefined') {
       const max = this.getMax();
       const min = this.getMin();
       if (max === min) {
-        this._hue = 0;
+        this._h = 0;
       } else {
         const delta = max - min;
-        this._hue =
+        this._h =
           60 *
           (this.r === max
             ? (this.g - this.b) / delta + (this.g < this.b ? 6 : 0)
@@ -165,22 +136,21 @@ export class FastColor {
               : (this.r - this.g) / delta + 4);
       }
     }
-    return this._hue;
+    return this._h;
   }
 
   getSaturation() {
-    if (typeof this._saturation === 'undefined') {
+    if (typeof this._s === 'undefined') {
       const max = this.getMax();
       const min = this.getMin();
       if (max === min) {
-        this._saturation = 0;
+        this._s = 0;
       } else {
         const delta = max - min;
-        this._saturation =
-          this.getLightness() > 0.5 ? delta / (510 - max - min) : delta / (max + min);
+        this._s = this.getLightness() > 0.5 ? delta / (510 - max - min) : delta / (max + min);
       }
     }
-    return this._saturation;
+    return this._s;
   }
 
   getLightness() {
@@ -195,10 +165,10 @@ export class FastColor {
    * @see http://www.w3.org/TR/AERT#color-contrast
    */
   getBrightness(): number {
-    if (typeof this._brightness === 'undefined') {
-      this._brightness = (this.r * 299 + this.g * 587 + this.b * 114) / 1000;
+    if (typeof this.brightness === 'undefined') {
+      this.brightness = (this.r * 299 + this.g * 587 + this.b * 114) / 1000;
     }
-    return this._brightness;
+    return this.brightness;
   }
 
   isDark(): boolean {
@@ -239,7 +209,15 @@ export class FastColor {
     return hex;
   }
 
-  toRgb() {
+  toHsl(): HSLA {
+    return {
+      h: this.h,
+      s: this.s,
+      l: this.l,
+    };
+  }
+
+  toRgb(): RGBA {
     return {
       r: this.r,
       g: this.g,
@@ -252,6 +230,51 @@ export class FastColor {
     return this.a !== 1
       ? `rgba(${this.r},${this.g},${this.b},${this.a.toPrecision(2)})`
       : `rgb(${this.r},${this.g},${this.b})`;
+  }
+
+  private fromHSLA({ h, s, l, a }: HSLA) {
+    this._h = h;
+    this._s = s;
+    this._l = l;
+    this.a = typeof a === 'number' ? a : 1;
+
+    if (s === 0) {
+      const rgb = Math.round(l * 255);
+      return new FastColor({ r: rgb, g: rgb, b: rgb, a });
+    }
+
+    const huePrime = h / 60;
+    const chroma = (1 - Math.abs(2 * l - 1)) * s;
+    const secondComponent = chroma * (1 - Math.abs((huePrime % 2) - 1));
+
+    this.r = 0;
+    this.g = 0;
+    this.b = 0;
+
+    if (huePrime >= 0 && huePrime < 1) {
+      this.r = chroma;
+      this.g = secondComponent;
+    } else if (huePrime >= 1 && huePrime < 2) {
+      this.r = secondComponent;
+      this.g = chroma;
+    } else if (huePrime >= 2 && huePrime < 3) {
+      this.g = chroma;
+      this.b = secondComponent;
+    } else if (huePrime >= 3 && huePrime < 4) {
+      this.g = secondComponent;
+      this.b = chroma;
+    } else if (huePrime >= 4 && huePrime < 5) {
+      this.r = secondComponent;
+      this.b = chroma;
+    } else if (huePrime >= 5 && huePrime < 6) {
+      this.r = chroma;
+      this.b = secondComponent;
+    }
+
+    const lightnessModification = l - chroma / 2;
+    this.r = Math.round((this.r + lightnessModification) * 255);
+    this.g = Math.round((this.g + lightnessModification) * 255);
+    this.b = Math.round((this.b + lightnessModification) * 255);
   }
 }
 

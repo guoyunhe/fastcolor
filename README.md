@@ -3,7 +3,7 @@
 Color class 2~4x faster than `@ctrl/cinycolor`. Can be a drop-in replacement for `@ctrl/tinycolor`, with the follwing differences:
 
 - Don't support CSS color names, like `'darkgreen'`, `'orange'`. This helps reduce bundle size.
-- Don't support CMYK, HSL, HSV as input and output formats. This helps reduce bundle size and improve performance.
+- Don't support CMYK as input and output formats (almost no use case in web apps). This helps reduce bundle size and improve performance.
 
 ```
 npm install --save fastcolor
@@ -14,8 +14,15 @@ npm install --save fastcolor
 ```js
 import { FastColor } from 'fastcolor';
 
+new FastColor('#6cf');
 new FastColor('#66ccff');
+new FastColor('#66ccff88');
+new FastColor('rgba(102, 204, 255)');
 new FastColor('rgba(102, 204, 255, .5)');
+new FastColor('hsl(200, 60%, 75%)');
+new FastColor('hsla(200, 60%, 75%, 50%)');
+new FastColor({ r: 103, g: 204, b: 255, a: 0.5 });
+new FastColor({ h: 200, s: 0.6, l: 0.75 });
 ```
 
 ## Clone
