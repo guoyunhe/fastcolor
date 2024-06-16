@@ -278,6 +278,5 @@ export class FastColor {
   }
 }
 
-export default FastColor;
-
+// to be compatible with tinycolor, tinycolor2, @ctrl/tinycolor
 export { FastColor as TinyColor };
