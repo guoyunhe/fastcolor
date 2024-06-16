@@ -134,7 +134,6 @@ describe('isDark', () => {
 
 describe('isLight', () => {
   const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
-  console.log('init');
   bench('@ctrl/tinycolor', () => {
     color1.isLight();
   });
