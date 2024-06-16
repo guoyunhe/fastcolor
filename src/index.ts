@@ -29,7 +29,7 @@ export class FastColor {
   private _max?: number;
   private _min?: number;
 
-  private brightness?: number;
+  private _brightness?: number;
 
   constructor(input: ColorInput) {
     if (typeof input === 'string') {
@@ -105,14 +105,14 @@ export class FastColor {
     return new FastColor({ h, s, l, a: this.a });
   }
 
-  getMax() {
+  private get max() {
     if (typeof this._max === 'undefined') {
       this._max = Math.max(this.r, this.g, this.b);
     }
     return this._max;
   }
 
-  getMin() {
+  private get min() {
     if (typeof this._min === 'undefined') {
       this._min = Math.min(this.r, this.g, this.b);
     }
@@ -121,17 +121,15 @@ export class FastColor {
 
   getHue() {
     if (typeof this._h === 'undefined') {
-      const max = this.getMax();
-      const min = this.getMin();
-      if (max === min) {
+      if (this.max === this.min) {
         this._h = 0;
       } else {
-        const delta = max - min;
+        const delta = this.max - this.min;
         this._h =
           60 *
-          (this.r === max
+          (this.r === this.max
             ? (this.g - this.b) / delta + (this.g < this.b ? 6 : 0)
-            : this.g === max
+            : this.g === this.max
               ? (this.b - this.r) / delta + 2
               : (this.r - this.g) / delta + 4);
       }
@@ -141,34 +139,22 @@ export class FastColor {
 
   getSaturation() {
     if (typeof this._s === 'undefined') {
-      const max = this.getMax();
-      const min = this.getMin();
-      if (max === min) {
+      if (this.max === this.min) {
         this._s = 0;
       } else {
-        const delta = max - min;
-        this._s = this.getLightness() > 0.5 ? delta / (510 - max - min) : delta / (max + min);
+        const delta = this.max - this.min;
+        const sum = this.max + this.min;
+        this._s = this.getLightness() > 0.5 ? delta / (510 - sum) : delta / sum;
       }
     }
     return this._s;
   }
 
-  getLightness() {
+  getLightness(): number {
     if (typeof this._l === 'undefined') {
-      this._l = (this.getMax() + this.getMin()) / 510;
+      this._l = (this.max + this.min) / 510;
     }
     return this._l;
-  }
-
-  /**
-   * Returns the perceived brightness of the color, from 0-255.
-   * @see http://www.w3.org/TR/AERT#color-contrast
-   */
-  getBrightness(): number {
-    if (typeof this.brightness === 'undefined') {
-      this.brightness = (this.r * 299 + this.g * 587 + this.b * 114) / 1000;
-    }
-    return this.brightness;
   }
 
   isDark(): boolean {
@@ -179,7 +165,18 @@ export class FastColor {
     return this.getBrightness() >= 128;
   }
 
-  onBackground(bg: FastColor) {
+  /**
+   * Returns the perceived brightness of the color, from 0-255.
+   * @see http://www.w3.org/TR/AERT#color-contrast
+   */
+  getBrightness(): number {
+    if (typeof this._brightness === 'undefined') {
+      this._brightness = (this.r * 299 + this.g * 587 + this.b * 114) / 1000;
+    }
+    return this._brightness;
+  }
+
+  onBackground(bg: FastColor): FastColor {
     const alpha = this.a + bg.a * (1 - this.a);
 
     return new FastColor({
@@ -190,11 +187,11 @@ export class FastColor {
     });
   }
 
-  setAlpha(alpha: number) {
+  setAlpha(alpha: number): void {
     this.a = alpha;
   }
 
-  toHexString() {
+  toHexString(): string {
     let hex = '#';
     const rHex = this.r.toString(16);
     hex += rHex.length === 2 ? rHex : '0' + rHex;
@@ -226,7 +223,7 @@ export class FastColor {
     };
   }
 
-  toRgbString() {
+  toRgbString(): string {
     return this.a !== 1
       ? `rgba(${this.r},${this.g},${this.b},${this.a.toPrecision(2)})`
       : `rgb(${this.r},${this.g},${this.b})`;

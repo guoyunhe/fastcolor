@@ -1,6 +1,6 @@
 import { TinyColor } from '@ctrl/tinycolor';
 import { bench } from 'vitest';
-import FastColor from '.';
+import { FastColor } from '.';
 
 describe('constructor', () => {
   describe('hex #6cf', () => {
@@ -63,13 +63,23 @@ describe('constructor', () => {
     });
   });
 
-  describe('object { r: 11, g: 22, b: 33 }', () => {
+  describe('rgba object { r: 11, g: 22, b: 33 }', () => {
     bench('@ctrl/tinycolor', () => {
       new TinyColor({ r: 11, g: 22, b: 33 });
     });
 
     bench('fastcolor', () => {
       new FastColor({ r: 11, g: 22, b: 33 });
+    });
+  });
+
+  describe('hsla object { h: 11, s: 22, l: 33, a: 0.5 }', () => {
+    bench('@ctrl/tinycolor', () => {
+      new TinyColor({ h: 11, s: 22, l: 33, a: 0.5 });
+    });
+
+    bench('fastcolor', () => {
+      new FastColor({ h: 11, s: 22, l: 33, a: 0.5 });
     });
   });
 });
@@ -107,6 +117,31 @@ describe('lighten', () => {
   const color2 = new FastColor({ r: 11, g: 22, b: 33 });
   bench('fastcolor', () => {
     color2.lighten();
+  });
+});
+
+describe('isDark', () => {
+  const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
+  bench('@ctrl/tinycolor', () => {
+    color1.isDark();
+  });
+
+  const color2 = new FastColor({ r: 11, g: 22, b: 33 });
+  bench('fastcolor', () => {
+    color2.isDark();
+  });
+});
+
+describe('isLight', () => {
+  const color1 = new TinyColor({ r: 11, g: 22, b: 33 });
+  console.log('init');
+  bench('@ctrl/tinycolor', () => {
+    color1.isLight();
+  });
+
+  const color2 = new FastColor({ r: 11, g: 22, b: 33 });
+  bench('fastcolor', () => {
+    color2.isLight();
   });
 });
 
